@@ -1,18 +1,19 @@
-FROM ubuntu:18.04
+FROM ubuntu:22.04
 
-LABEL maintainer="jonatan@cs.ubc.ca"
+LABEL maintainer="mfbutner@ucdavis.edu"
+LABEL taken_from="prairielearn/grader-c"
 
 ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update
-RUN apt-get install -y python3.8 gcc make python3-pip valgrind check pkg-config && apt clean
+RUN apt-get install -y python3.10 gcc make python3-pip valgrind check pkg-config && apt clean
 
-RUN ln -sf /usr/bin/python3.8 /usr/bin/python3
+RUN ln -sf /usr/bin/python3.10 /usr/bin/python3
 
-RUN pip3 install -U pip==21.3.1
+RUN python3 -m pip install -U pip>=21.3.1
 
 COPY requirements.txt /requirements.txt
-RUN pip3 install --no-cache-dir -r /requirements.txt
+RUN python3 -m pip install --no-cache-dir -r /requirements.txt
 
 ENV LANG=en_US.UTF-8
 ENV LC_LANG=en_US.UTF-8
