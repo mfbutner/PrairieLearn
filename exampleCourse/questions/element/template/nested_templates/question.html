@@ -1,0 +1,54 @@
+<pl-question-panel>
+    {{! Load the prompt explaining what to enter for the assignment}}
+    <pl-template file-name="prompt_in_collapsed_section.mustache.html"
+                 parent-directory="server-files-course"
+                 subdirectory="templates"
+                 warn-undefined="False">
+        <pl-variable name="section_name">ExplainPrompt</pl-variable>
+        <pl-variable name="section_header">Click To Hide The Prompt</pl-variable>
+        <pl-variable name="prompt_path">pre_code_prompt.html</pl-variable>
+        <pl-variable name="parent_directory">question</pl-variable>
+        <pl-variable name="show">True</pl-variable>
+    </pl-template>
+
+
+    {{! Load the problem specific programming prompt into collapsed section}}
+    <pl-template file-name="prompt_in_collapsed_section.mustache.html"
+                 parent-directory="server-files-course"
+                 subdirectory="templates"
+                 warn-undefined="False">
+        <pl-variable name="section_name">ProgrammingPrompt</pl-variable>
+        <pl-variable name="section_header">Click To Show The Prompt For The Program</pl-variable>
+        <pl-variable name="prompt_path">quadratic_formula_prompt.html</pl-variable>
+        <pl-variable name="parent_directory">question</pl-variable>
+    </pl-template>
+
+
+    <pl-file-editor
+            file-name="report.md"
+            ace-theme="ace/theme/monokai"
+            preview="markdown" ,
+            normalize-to-ascii=true>
+        # My Algorithm (steps to solve the problem)
+    </pl-file-editor>
+
+</pl-question-panel>
+
+
+<pl-submission-panel>
+    <pl-file-preview></pl-file-preview>
+</pl-submission-panel>
+
+<pl-hide-in-manual-grading>
+    <pl-question-panel>
+
+        <h3>You can only submit this assignment once!!!</h3>
+        <pl-multiple-choice answers-name="one_submission_understanding" weight="1">
+            <pl-answer correct="true">
+                I understand that I only get to make a single attempt at this question and will not be able to edit
+                it after submitting.
+            </pl-answer>
+        </pl-multiple-choice>
+
+    </pl-question-panel>
+</pl-hide-in-manual-grading>
